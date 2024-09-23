@@ -1,0 +1,51 @@
+# Sistema de Gestão de Restaurante
+
+Este projeto é um sistema simples de gestão de restaurante implementado em SQL. Ele permite o gerenciamento de clientes, mesas, pedidos e itens de pedidos, com funcionalidades para registrar, consultar, atualizar e remover registros no banco de dados.
+
+## Estrutura do Sistema
+
+O sistema contém quatro tabelas principais:
+- **Clientes**: Armazena informações dos clientes.
+- **Mesas**: Registra as mesas disponíveis no restaurante e suas capacidades.
+- **Pedidos**: Armazena os pedidos realizados por clientes e mesas específicas.
+- **Itens_Pedido**: Detalha os itens de cada pedido, incluindo descrição, quantidade e preço unitário.
+
+## Funcionalidades
+
+- **Clientes**: Adicionar, visualizar e atualizar dados dos clientes.
+- **Mesas**: Gerenciar mesas e suas capacidades.
+- **Pedidos**: Registrar novos pedidos, associando-os a clientes e mesas.
+- **Itens de Pedido**: Adicionar itens ao pedido, consultar valores e realizar cálculos de subtotais.
+
+### Operações Principais
+
+1. **Criação do Banco de Dados**: Cria as tabelas de Clientes, Mesas, Pedidos e Itens_Pedido.
+2. **Inserção de Dados**: Popula o banco de dados com clientes, mesas, pedidos e itens de pedidos.
+3. **Consultas**:
+   - Consultar a lista de clientes, mesas e pedidos.
+   - Consultar os itens de um pedido específico e calcular o subtotal.
+4. **Atualizações**:
+   - Atualizar informações de clientes e mesas.
+   - Modificar a capacidade de mesas ou detalhes de contato de clientes.
+5. **Remoção de Dados**:
+   - Excluir pedidos de clientes.
+   - Remover mesas que não estão mais em uso.
+
+### Requisitos
+
+- **MySQL** ou outro banco de dados SQL compatível.
+- Ferramenta de gerenciamento de banco de dados como **MySQL Workbench** ou **DBeaver**.
+
+### Como Executar
+
+1. Clone o repositório ou copie o script SQL.
+2. Execute o script SQL no seu ambiente de banco de dados.
+3. Personalize conforme necessário para as necessidades do restaurante.
+
+### Licença
+
+Este projeto está licenciado sob a licença MIT. Para mais detalhes, consulte o arquivo [LICENSE](./LICENSE).
+
+### Autor
+
+Desenvolvido por [Seu Nome].
