@@ -1,0 +1,68 @@
+CREATE DATABASE RestauranteDB;
+USE RestauranteDB;
+CREATE TABLE Clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20),
+    email VARCHAR(100)
+);
+CREATE TABLE Mesas (
+    id_mesa INT PRIMARY KEY AUTO_INCREMENT,
+    numero_mesa INT NOT NULL,
+    capacidade INT NOT NULL
+);
+CREATE TABLE Pedidos (
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    id_mesa INT,
+    data_pedido DATETIME NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
+    FOREIGN KEY (id_mesa) REFERENCES Mesas(id_mesa) ON DELETE CASCADE
+);
+CREATE TABLE Itens_Pedido (
+    id_item INT PRIMARY KEY AUTO_INCREMENT,
+    id_pedido INT,
+    descricao_item VARCHAR(255) NOT NULL,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido) ON DELETE CASCADE
+);
+INSERT INTO Clientes (nome, telefone, email) VALUES
+('João Silva', '123456789', 'joao@gmail.com'),
+('Maria Oliveira', '987654321', 'maria@gmail.com'),
+('Carlos Souza', '555555555', 'carlos@gmail.com');
+INSERT INTO Mesas (numero_mesa, capacidade) VALUES
+(1, 4),
+(2, 6),
+(3, 2);
+INSERT INTO Pedidos (id_cliente, id_mesa, data_pedido, total) VALUES
+(1, 1, '2024-09-03 12:30:00', 150.00),
+(2, 2, '2024-09-03 13:00:00', 200.00);
+INSERT INTO Itens_Pedido (id_pedido, descricao_item, quantidade, preco_unitario) VALUES
+(1, 'Pizza Margherita', 2, 50.00),
+(1, 'Coca-Cola', 4, 12.50),
+(2, 'Lasanha', 3, 70.00),
+(2, 'Suco de Laranja', 3, 10.00);
+SELECT * FROM Clientes;
+SELECT * FROM Mesas;
+SELECT * FROM Pedidos;
+SELECT 
+    Itens_Pedido.descricao_item, 
+    Itens_Pedido.quantidade, 
+    Itens_Pedido.preco_unitario, 
+    (Itens_Pedido.quantidade * Itens_Pedido.preco_unitario) AS subtotal
+FROM 
+    Itens_Pedido
+JOIN 
+    Pedidos ON Itens_Pedido.id_pedido = Pedidos.id_pedido
+WHERE 
+    Pedidos.id_pedido = 1;
+UPDATE Clientes 
+SET telefone = '111111111' 
+WHERE id_cliente = 1;
+UPDATE Mesas 
+SET capacidade = 8 
+WHERE numero_mesa = 2;
+DELETE FROM Pedidos 
+WHERE id_pedido = 2;
